@@ -171,7 +171,7 @@ function App() {
         {error && <p className="alert error">{error}</p>}
 
         <footer className="footnotes">
-  <p>Files are sent to your own backend at {API_URL}. Output is downloaded automatically.</p>
+  {/* <p>Files are sent to your own backend at {API_URL}. Output is downloaded automatically.</p> */}
   <p>Keep this tab open until the download prompt appears.</p>
 
   {/* 👇 Add this line */}
