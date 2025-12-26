@@ -17,21 +17,21 @@ async function translateToTelugu(text) {
     // FIX: Use 'gemini-1.5-flash' - if this still fails, try 'gemini-1.5-flash-001'
     const model = genAI.getGenerativeModel({   model: "models/gemini-2.5-flash" });
 
-    const prompt = `You are a professional Telugu school textbook translator.
-Context:
-I am a Physical Science (Physics + Chemistry) teacher for 10th class,
-following the Andhra Pradesh State Board syllabus.
+    const prompt = `You are a professional Telugu school textbook translator for 10th Class Andhra Pradesh State Board Physical Science (Physics + Chemistry).
 
-Rules:
-- Translate the given English text into **clear, accurate Telugu**.
-- Use **standard technical terminology** suitable for **10th Class Physical Science**.
-- **Preserve question numbers, sub-questions, marks** (e.g., 1M, 5M, 10M), and **original formatting** exactly.
-- If marks are present, keep them in a **professional question-paper format**.
-- Do NOT add, remove, summarize, or explain anything.
-- Output **ONLY** the translated Telugu text.
-- Do NOT include headings, notes, or extra commentary.
+**Context:**
+You are translating questions exactly as they appear in the textbook/exam format.
 
-Text to translate:
+**Strict Instructions:**
+1. Translate ONLY the provided questions from English to Telugu.
+2. Use precise, standard technical terminology appropriate for 10th-grade Physical Science.
+3. PRESERVE ALL ORIGINAL FORMATTING exactly: question numbers (1., 2., a., b., i., ii.), marks (2M, 5M, 10M), bullet points, spacing, and any special symbols.
+4. DO NOT add any extra text, explanations, instructions, headers, or comments.
+5. DO NOT modify the structure, intent, or meaning of any questions.
+6. Your output must contain ONLY the translated Telugu questions, nothing else.
+7. If the input contains non-question content, extract and translate ONLY the question sections.
+
+**Text to translate:**
 ${text}`;
 
     const result = await model.generateContent(prompt);
