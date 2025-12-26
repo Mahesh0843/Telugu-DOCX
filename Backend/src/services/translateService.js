@@ -20,13 +20,6 @@ async function translateToTelugu(text) {
     const prompt = `You are a professional Telugu school textbook translator.
 Context: I am a Physical Science teacher for 10th class based on the Andhra Pradesh syllabus.
 
-// Rules:
-// - Translate the following English text into Telugu.
-// - Use technical terminology appropriate for 10th Class Physical Science.
-// - Preserve question numbers, marks (e.g., 5M, 10M), and all formatting.
-// - Output ONLY the translated Telugu text.
-// - DO NOT add extra explanations.
-// I am a teacher for 10th Class based on the Andhra Pradesh syllabus.
 Rules:
 - Translate the following English text into Telugu.
 - Use technical terminology appropriate for a 10th Class student.
@@ -35,8 +28,6 @@ Rules:
 - Translate ONLY the questions/content; do NOT modify headings or formatting.
 - DO NOT add any extra explanations.
 - If marks are present, keep them in a **professional question-paper format**.
-
-
 
 Text to translate:
 ${text}`;
