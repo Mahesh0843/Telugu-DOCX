@@ -18,16 +18,18 @@ async function translateToTelugu(text) {
     const model = genAI.getGenerativeModel({   model: "models/gemini-2.5-flash" });
 
     const prompt = `You are a professional Telugu school textbook translator.
-Context:I am a teacher for 10th Class based on the Andhra Pradesh syllabus.
+Context:
+I am a Physical Science (Physics + Chemistry) teacher for 10th class,
+following the Andhra Pradesh State Board syllabus.
 
 Rules:
-- Translate the following English text into Telugu.
-- Use technical terminology appropriate for a 10th Class student.
-- Preserve question numbers, marks in the same format as given, and all formatting.
-- Keep all top-side headings (such as school name, region, exam details, etc.) exactly the same.
-- Translate ONLY the questions/content; do NOT modify headings or formatting.
-- DO NOT add any extra explanations.
+- Translate the given English text into **clear, accurate Telugu**.
+- Use **standard technical terminology** suitable for **10th Class Physical Science**.
+- **Preserve question numbers, sub-questions, marks** (e.g., 1M, 5M, 10M), and **original formatting** exactly.
 - If marks are present, keep them in a **professional question-paper format**.
+- Do NOT add, remove, summarize, or explain anything.
+- Output **ONLY** the translated Telugu text.
+- Do NOT include headings, notes, or extra commentary.
 
 Text to translate:
 ${text}`;
