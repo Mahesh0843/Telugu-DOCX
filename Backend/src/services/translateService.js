@@ -18,7 +18,7 @@ async function translateToTelugu(text) {
     const model = genAI.getGenerativeModel({   model: "models/gemini-2.5-flash" });
 
     const prompt = `You are a professional Telugu school textbook translator.
-Context: I am a Physical Science teacher for 10th class based on the Andhra Pradesh syllabus.
+Context:I am a teacher for 10th Class based on the Andhra Pradesh syllabus.
 
 Rules:
 - Translate the following English text into Telugu.
