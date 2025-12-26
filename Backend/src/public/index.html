@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Question Paper to Telugu DOCX</title>
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; margin: 2rem; }
+    .box { border: 1px solid #ddd; padding: 1rem; border-radius: 8px; max-width: 700px; }
+    .row { margin: 0.5rem 0; }
+    button { padding: 0.6rem 1rem; }
+    #result { margin-top: 1rem; }
+    .hint { color: #666; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <h1>Convert Question Paper to Telugu</h1>
+  <div class="box">
+    <form id="uploadForm">
+      <div class="row">
+        <label>Upload file (PDF/Image/DOCX):</label><br />
+        <input type="file" name="file" accept=".pdf,.png,.jpg,.jpeg,.tiff,.doc,.docx" required />
+      </div>
+      <div class="row">
+        <label>Target language:</label>
+        <select name="targetLang">
+          <option value="te" selected>Telugu (te)</option>
+          <option value="en">English (en)</option>
+        </select>
+        <span class="hint">Default is Telugu.</span>
+      </div>
+      <button type="submit">Convert</button>
+    </form>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('uploadForm');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      document.getElementById('result').innerHTML = 'Converting…';
+      try {
+        const res = await fetch('/api/convert', { method: 'POST', body: fd });
+        const json = await res.json();
+        if (!res.ok) throw new Error(json.error || 'Conversion failed');
+        const html = `
+          <p>Converted to <b>${json.language}</b>. Size: ${json.bytes} bytes</p>
+          <p>Download DOCX: <a href="${json.docxUrl}" target="_blank">${json.docx}</a></p>
+          <p>View text: <a href="${json.textUrl}" target="_blank">${json.text}</a></p>
+        `;
+        document.getElementById('result').innerHTML = html;
+      } catch (err) {
+        document.getElementById('result').innerHTML = `<span style="color:#b00">${err.message}</span>`;
+      }
+    });
+  </script>
+</body>
+</html>
